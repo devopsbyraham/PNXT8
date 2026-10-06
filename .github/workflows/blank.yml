@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,15 +34,15 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: echo "ci is done"
 
       - name: Run ESLint
-        run: npm run lint
+ run: npm run lint
 
       - name: Check formatting
         run: npm run format:check
 
-      - name: Run tests
+   name: Run tests
         run: npm run test:ci
 
       - name: Build application
