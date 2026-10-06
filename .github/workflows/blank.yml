@@ -1,15 +1,22 @@
 name: Node.js CI
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-
-  pull_request:
-    branches:
-      - main
-      - develop
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+      deploy_tests:
+        description: 'Run integration tests?'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   ci:
